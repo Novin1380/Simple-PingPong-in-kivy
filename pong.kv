@@ -1,0 +1,42 @@
+<PongBall>:
+    size: 50 , 50
+    canvas: 
+        Ellipse: 
+            size : self.size
+            pos : self.pos
+<PongPaddle>:
+    size: 20 , 200
+    canvas: 
+        Rectangle: 
+            size : self.size
+            pos : self.pos    
+<PongGame>:
+    ball: pong_ball
+    player1 : left_player
+    player2 : right_player
+    canvas:
+        Rectangle: 
+            size:10, self.height
+            pos: self.center_x-5 , 0 
+    Label:
+        text: str(root.player1.score)
+        font_size:70
+        center_x:root.width/4
+        top:root.top-50
+    Label:
+        text: str(root.player2.score)
+        font_size:70
+        center_x:root.width*3/4
+        top:root.top-50
+    PongBall:
+        id: pong_ball
+        center : self.parent.center
+    PongPaddle:
+        id:left_player
+        x:root.x
+        center_y:root.center_y
+
+    PongPaddle:
+        id:right_player
+        x:root.width - self.width
+        center_y:root.center_y
